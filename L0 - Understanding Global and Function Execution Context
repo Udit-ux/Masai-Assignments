@@ -1,0 +1,18 @@
+// Step 1: Declare a global variable
+let age = 25;
+
+// Step 2: Create a function to display the value of age
+function displayAge() {
+  console.log("Current age is:", age);
+}
+
+// Step 3: Create another function to change the value of age
+function changeAge() {
+  age = 30;
+  console.log("Age after change:", age);
+}
+
+// Step 4: Call both functions to demonstrate execution context
+displayAge();  // Should log: Current age is: 25
+changeAge();   // Should log: Age after change: 30
+displayAge();  // Should log: Current age is: 30
