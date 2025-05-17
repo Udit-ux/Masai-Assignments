@@ -1,0 +1,25 @@
+function createCounter() {
+    let count = 0;
+
+    function counter() {
+        count++;
+        return count;
+    }
+
+    counter.reset = function() {
+        count = 0;
+    };
+
+    return counter;
+}
+
+// Example usage:
+const myCounter = createCounter();
+
+console.log(myCounter()); // 1
+console.log(myCounter()); // 2
+console.log(myCounter()); // 3
+
+myCounter.reset();        // Reset counter
+
+console.log(myCounter()); // 1
