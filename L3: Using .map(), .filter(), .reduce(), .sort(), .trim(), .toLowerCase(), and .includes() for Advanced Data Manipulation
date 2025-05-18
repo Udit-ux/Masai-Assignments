@@ -1,0 +1,38 @@
+function processData(students) {
+  // Step 1: Filter students with name including "Alice" (case-insensitive) and score >= 50
+  const passedStudents = students
+    .filter(student =>
+      student.name.toLowerCase().includes('alice') && student.score >= 50
+    );
+
+  // Step 2: Sort students by score in descending order
+  const sortedStudents = passedStudents.sort((a, b) => b.score - a.score);
+
+  // Step 3: Map to add rank, trim name, convert to uppercase
+  const rankedStudents = sortedStudents.map((student, index) => {
+    return {
+      rank: index + 1,
+      name: student.name.trim().toUpperCase(),
+      score: student.score
+    };
+  });
+
+  // Step 4: Use reduce to count total number of students who passed
+  const totalPassed = rankedStudents.reduce(count => count + 1, 0);
+
+  // Step 5: Return the final object
+  return {
+    totalPassed,
+    students: rankedStudents
+  };
+}
+
+// Example usage:
+const students = [
+  { name: ' Alice Cooper ', score: 85 },
+  { name: 'Bob', score: 60 },
+  { name: 'alice johnson', score: 45 },
+  { name: 'Alice Marie', score: 72 }
+];
+
+console.log(processData(students));
