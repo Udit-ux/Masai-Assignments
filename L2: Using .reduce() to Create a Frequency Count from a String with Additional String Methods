@@ -1,0 +1,17 @@
+function getCharacterFrequency(str) {
+  return str
+    .trim()                      // Remove leading/trailing spaces
+    .toLowerCase()              // Convert to lowercase
+    .split('')                  // Convert string to array of characters
+    .filter(char => char !== ' ') // Exclude spaces
+    .reduce((acc, char) => {
+      acc[char] = (acc[char] || 0) + 1; // Count each character
+      return acc;
+    }, {});
+}
+
+// Example usage:
+const str = " Hello World! ";
+const result = getCharacterFrequency(str);
+console.log(result);
+// Output: { h: 1, e: 1, l: 3, o: 2, w: 1, r: 1, d: 1, '!': 1 }
