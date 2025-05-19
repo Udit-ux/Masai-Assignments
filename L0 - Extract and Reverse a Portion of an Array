@@ -1,0 +1,12 @@
+function extractAndReverse(arr) {
+  // Step 1: Extract from 3rd (index 2) to 5th (index 4) element using slice
+  const subArray = arr.slice(2, 5);
+  
+  // Step 2: Reverse the extracted subarray
+  return subArray.reverse();
+}
+
+// Example usage:
+const numbers = [15, 30, 45, 60, 75, 90];
+const result = extractAndReverse(numbers);
+console.log(result); // Output: [75, 60, 45]
