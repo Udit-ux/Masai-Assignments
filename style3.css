@@ -1,0 +1,31 @@
+/* Universal selector to reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Styling for the main title using ID selector */
+#main-title {
+  font-size: 32px;
+  color: darkblue;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Styling for the subtitle using ID selector */
+#subtitle {
+  font-size: 24px;
+  color: darkgreen;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* Style for all paragraphs */
+p {
+  padding: 12px;
+  border: 1px solid #ccc; /* Soft border color */
+  margin: 10px 20px;
+  font-size: 16px;
+}
