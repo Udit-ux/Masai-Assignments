@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+
+  /* Initially arrange items in a row (default direction for flex) */
+  flex-direction: row;
+
+  /* Change to column to stack items vertically */
+  /* Uncomment the line below to switch the layout */
+  /* flex-direction: column; */
+
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  gap: 20px; /* space between items */
+}
+
+/* Flex items style */
+.item {
+  background-color: #2196f3;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  width: 100px;
+  text-align: center;
+}
+
+/*
+  ➤ Explanation of flex-direction:
+  - flex-direction: row (default) -> items are laid out horizontally.
+  - flex-direction: column -> items are stacked vertically from top to bottom.
+*/
