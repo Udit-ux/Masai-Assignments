@@ -1,0 +1,31 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Mobile-first base styles */
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: #f8f8f8;
+}
+
+.content {
+  max-width: 800px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Typography enhancement for screens ≥ 600px */
+@media screen and (min-width: 600px) {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
