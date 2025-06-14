@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Div Modifier</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    #display-div {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #333;
+      background-color: lightgray;
+    }
+
+    input, button {
+      margin: 10px 5px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Modify the Div</h2>
+
+  <!-- Input for color -->
+  <label for="color-input">Enter Background Color:</label>
+  <input type="text" id="color-input" placeholder="e.g. red, blue, green">
+
+  <!-- Input for text -->
+  <label for="text-input">Enter Text:</label>
+  <input type="text" id="text-input" placeholder="Enter new text here">
+
+  <!-- Buttons -->
+  <button id="bg-btn">Change Background</button>
+  <button id="text-btn">Update Text</button>
+
+  <!-- Display Div -->
+  <div id="display-div">
+    This is the initial content of the div.
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
