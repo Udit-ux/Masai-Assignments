@@ -1,0 +1,26 @@
+/* Set background color of the page */
+body {
+    background-color: lightgray;
+}
+
+/* h1 styling */
+h1 {
+    color: navy;
+}
+
+/* h2 styling */
+h2 {
+    color: darkred;
+}
+
+/* First paragraph styling */
+.blue-paragraph {
+    color: blue;
+    font-size: 20px;
+}
+
+/* Second paragraph styling */
+.green-paragraph {
+    color: green;
+    font-size: 18px;
+}
