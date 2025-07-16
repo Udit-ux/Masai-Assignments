@@ -1,0 +1,31 @@
+/* Universal selector to reset margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling the h1 with id main-title */
+#main-title {
+    font-size: 32px;
+    color: darkblue;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Styling the h2 with id subtitle */
+#subtitle {
+    font-size: 24px;
+    color: darkgreen;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Paragraph styling */
+p {
+    padding: 10px;
+    margin: 15px;
+    border: 1px solid #ccc; /* soft grey border */
+    border-radius: 4px;
+    font-size: 16px;
+}
