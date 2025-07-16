@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Method CSS Example</title>
+  
+  <!-- Internal CSS -->
+  <style>
+    h1 {
+      color: navy;
+      font-size: 28px;
+      background-color: #f0f0f0; /* Fixed invalid color */
+    }
+
+    .highlighted-text {
+      background-color: yellow;
+      color: red;
+    }
+  </style>
+
+  <!-- External CSS Link -->
+  <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+
+  <!-- Internal style will apply -->
+  <h1>Main Title</h1>
+
+  <!-- Inline style (corrected color value) -->
+  <p style="font-size: 16px; color: #333;">This paragraph has inline styles applied.</p>
+
+  <!-- Class-based internal style -->
+  <p class="highlighted-text">This paragraph uses a class-based style.</p>
+
+  <!-- External CSS should apply -->
+  <div id="main-container">
+    <p>This div should have styles from the external stylesheet.</p>
+  </div>
+
+</body>
+</html>
