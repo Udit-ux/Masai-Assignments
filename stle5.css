@@ -1,0 +1,45 @@
+/* General nav style */
+.navbar {
+  background-color: #f0f0f0;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Descendant combinator: Different section styles */
+.section-one a {
+  color: darkred;
+}
+
+.section-two a {
+  color: darkblue;
+}
+
+.section-three a {
+  color: darkgreen;
+}
+
+/* Pseudo-classes */
+.section a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.section a:active {
+  transform: scale(0.95);
+}
+
+/* Child combinator: Only direct child links styled differently */
+.section > a {
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 2px solid #333;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+/* Attribute selector: Override for https links with high specificity */
+.section a[href^="https"] {
+  color: orange !important; /* Override all others */
+  font-style: italic;
+}
