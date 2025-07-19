@@ -1,0 +1,27 @@
+/* General list style */
+.interactive-list {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  max-width: 400px;
+}
+
+/* First item in bold */
+.interactive-list li:first-child {
+  font-weight: bold;
+}
+
+/* Adjacent sibling: style the item directly after the first item */
+.interactive-list li:first-child + li {
+  background-color: #e0f7fa;
+}
+
+/* General sibling: style all items after the third */
+.interactive-list li:nth-child(3) ~ li {
+  font-style: italic;
+}
+
+/* Hover effect on all list items */
+.interactive-list li:hover {
+  color: darkred;
+  cursor: pointer;
+}
