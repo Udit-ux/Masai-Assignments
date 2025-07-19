@@ -1,0 +1,14 @@
+/* Element selector - lowest specificity (0,0,1) */
+div {
+  color: blue;
+}
+
+/* Class selector - medium specificity (0,1,0) */
+.highlight {
+  color: green;
+}
+
+/* ID selector - highest specificity (1,0,0) */
+#special {
+  color: red;
+}
