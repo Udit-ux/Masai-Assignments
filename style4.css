@@ -1,0 +1,43 @@
+/* Reset and Box Model Fix */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+/* Container Fix */
+.container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* Box Styling */
+.box {
+  flex: 1 1 100px;
+  max-width: 150px;
+  height: 100px;
+  background: lightblue;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 100px;
+  position: relative; /* Changed from absolute to relative */
+}
+
+/* Text Fix */
+.text {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f9f9f9;
+  padding: 5px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
