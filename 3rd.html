@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive DOM Manipulation</title>
+  <style>
+    #main-box {
+      width: 300px;
+      height: 150px;
+      border: 2px solid black;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: lightgray;
+      font-size: 18px;
+    }
+
+    input {
+      display: block;
+      margin: 10px 0;
+    }
+
+    button {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Interactive DOM Manipulation</h1>
+
+  <!-- Input for color -->
+  <input type="text" id="color-input" placeholder="Enter background color">
+
+  <!-- Input for text content -->
+  <input type="text" id="text-input" placeholder="Enter new text">
+
+  <!-- Buttons -->
+  <button id="change-bg-btn">Change Background</button>
+  <button id="update-text-btn">Update Text</button>
+
+  <!-- Target div -->
+  <div id="main-box">This is the main box.</div>
+
+  <script src="script3.js"></script>
+</body>
+</html>
