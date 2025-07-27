@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced Task Manager</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    input, button {
+      padding: 8px;
+      margin: 5px;
+    }
+
+    .task {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 8px 0;
+    }
+
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    .filters, .counters {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Advanced Task Manager</h1>
+
+  <!-- Input to add task -->
+  <input type="text" id="taskInput" placeholder="Enter task">
+  <button id="addTaskBtn">Add Task</button>
+  <button id="sortBtn">Sort Alphabetically</button>
+
+  <!-- Filter buttons -->
+  <div class="filters">
+    <button id="allBtn">All Tasks</button>
+    <button id="completedBtn">Completed Tasks</button>
+    <button id="incompleteBtn">Incomplete Tasks</button>
+  </div>
+
+  <!-- Task container -->
+  <ul id="taskList"></ul>
+
+  <!-- Counter display -->
+  <div class="counters">
+    <p>Total Tasks: <span id="totalCount">0</span></p>
+    <p>Completed: <span id="completedCount">0</span></p>
+    <p>Incomplete: <span id="incompleteCount">0</span></p>
+  </div>
+
+  <script src="script5.js"></script>
+</body>
+</html>
