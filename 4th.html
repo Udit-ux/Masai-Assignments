@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Task List</title>
+</head>
+<body>
+  <!-- Input and Add Task Button -->
+  <input id="taskInput" type="text" placeholder="Enter task">
+  <button id="addTask">Add Task</button>
+
+  <!-- Task List -->
+  <ul id="taskList"></ul>
+
+  <script>
+    // Get DOM references
+    const addTaskButton = document.getElementById('addTask');
+    const taskInput = document.getElementById('taskInput');
+    const taskList = document.getElementById('taskList');
+
+    // Add task when button is clicked
+    addTaskButton.onclick = function () {
+      const taskText = taskInput.value.trim();
+
+      // Prevent adding empty tasks
+      if (taskText === '') {
+        alert('Please enter a task!');
+        return;
+      }
+
+      // Create a new <li> element
+      const newTask = document.createElement('li');
+      newTask.textContent = taskText;
+
+      
+      taskList.appendChild(newTask);
+
+      // Clear the input after adding
+      taskInput.value = '';
+    };
+
+    // Handle click on task list to remove items
+    taskList.onclick = function (e) {
+      
+      if (e.target.tagName === 'LI') {
+        e.target.remove(); // Remove clicked task
+      }
+    };
+  </script>
+</body>
+</html>
