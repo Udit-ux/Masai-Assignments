@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-User Shopping Cart</title>
+  <link rel="stylesheet" href="style5.css">
+</head>
+<body>
+  <div id="login-section">
+    <h2>Login</h2>
+    <input type="text" id="usernameInput" placeholder="Enter your username" />
+    <button id="loginBtn">Login</button>
+  </div>
+
+  <div id="cart-section" style="display: none;">
+    <h2>Welcome, <span id="userDisplay"></span></h2>
+    <div>
+      <input type="text" id="itemName" placeholder="Item Name" />
+      <input type="number" id="itemPrice" placeholder="Price" />
+      <input type="number" id="itemQty" placeholder="Quantity" />
+      <button id="addItemBtn">Add Item</button>
+    </div>
+
+    <table id="cartTable">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="cartBody"></tbody>
+    </table>
+    <h3>Total Cost: $<span id="totalCost">0</span></h3>
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+  <script src="script5.js"></script>
+</body>
+</html>
