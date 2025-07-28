@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Debugged Preferences Form</title>
+  <style>
+    body.light {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    body.dark {
+      background-color: #121212;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <h2>User Preferences</h2>
+  <form id="preferencesForm">
+    <label for="theme">Theme:</label>
+    <select id="theme">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+
+    <br><br>
+
+    <label for="language">Language:</label>
+    <select id="language">
+      <option value="en">English</option>
+      <option value="es">Spanish</option>
+    </select>
+
+    <br><br>
+
+    <label for="notifications">Notifications:</label>
+    <input type="checkbox" id="notifications">
+
+    <br><br>
+
+    <button type="submit">Save Preferences</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('preferencesForm');
+    const themeSelect = document.getElementById('theme');
+    const languageSelect = document.getElementById('language');
+    const notificationsCheckbox = document.getElementById('notifications');
+
+    // Apply theme to body
+    function applyTheme(theme) {
+      document.body.className = theme; // Directly apply the theme class to body
+    }
+
+    // Save preferences to localStorage
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const preferences = {
+        theme: themeSelect.value,
+        language: languageSelect.value,
+        notifications: notificationsCheckbox.checked
+      };
+
+      localStorage.setItem('preferences', JSON.stringify(preferences));
+      applyTheme(preferences.theme); // Dynamically apply theme after saving
+      alert('Preferences Saved!');
+    });
+
+    // Load preferences from localStorage on page load
+    window.onload = () => {
+      const preferencesString = localStorage.getItem('preferences');
+
+      if (preferencesString) {
+        const preferences = JSON.parse(preferencesString);
+
+        // 🛠 Fix 1: Variable naming mismatch. Use themeSelect.value = preferences.theme
+        themeSelect.value = preferences.theme;
+
+        // 🛠 Fix 2: Use correct variable languageSelect.value = preferences.language
+        languageSelect.value = preferences.language;
+
+        // 🛠 Fix 3: Checkbox checked property
+        notificationsCheckbox.checked = preferences.notifications;
+
+        // 🛠 Fix 4: Apply theme on load
+        applyTheme(preferences.theme);
+      } else {
+        // Apply default theme
+        applyTheme('light');
+      }
+    };
+  </script>
+</body>
+</html>
