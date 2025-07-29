@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Firebase CRUD App</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <style>
+    body { padding: 20px; }
+    #loading { display: none; font-weight: bold; color: blue; }
+  </style>
+</head>
+<body>
+
+  <h2>Firebase User Manager</h2>
+
+  <form id="userForm" class="mb-3">
+    <input type="text" id="name" placeholder="Name" required class="form-control mb-2">
+    <input type="email" id="email" placeholder="Email" required class="form-control mb-2">
+    <button class="btn btn-primary">Add User</button>
+  </form>
+
+  <div id="loading">Loading...</div>
+
+  <h4>Users:</h4>
+  <ul id="userList" class="list-group"></ul>
+
+  <!-- Edit Modal -->
+  <div class="modal" tabindex="-1" id="editModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit User</h5>
+          <button type="button" class="btn-close" onclick="hideModal()"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="editName" placeholder="Name" class="form-control mb-2">
+          <input type="email" id="editEmail" placeholder="Email" class="form-control mb-2">
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-success" onclick="saveEdit()">Save</button>
+          <button class="btn btn-secondary" onclick="hideModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+const DB_URL = 'https://YOUR_DATABASE_URL_HERE/users';
+let currentEditId = null;
+
+// Add User
+document.getElementById('userForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  if (!name || !email) return;
+
+  showLoading();
+  await fetch(DB_URL + '.json', {
+    method: 'POST',
+    body: JSON.stringify({ name, email })
+  });
+  e.target.reset();
+  await fetchUsers();
+  hideLoading();
+});
+
+// Fetch & Display Users
+async function fetchUsers() {
+  showLoading();
+  const res = await fetch(DB_URL + '.json');
+  const data = await res.json();
+  const list = document.getElementById('userList');
+  list.innerHTML = '';
+
+  for (let id in data) {
+    const user = data[id];
+    const li = document.createElement('li');
+    li.className = 'list-group-item d-flex justify-content-between align-items-center';
+
+    li.innerHTML = `
+      <span>
+        <strong>${user.name}</strong> - ${user.email}
+      </span>
+      <span>
+        <button class="btn btn-sm btn-warning" onclick="editUser('${id}', '${user.name}', '${user.email}')">Edit</button>
+        <button class="btn btn-sm btn-danger" onclick="deleteUser('${id}')">Delete</button>
+      </span>
+    `;
+    list.appendChild(li);
+  }
+  hideLoading();
+}
+
+// Delete User
+async function deleteUser(id) {
+  showLoading();
+  await fetch(`${DB_URL}/${id}.json`, { method: 'DELETE' });
+  await fetchUsers();
+  hideLoading();
+}
+
+// Edit User - Show Modal
+function editUser(id, name, email) {
+  currentEditId = id;
+  document.getElementById('editName').value = name;
+  document.getElementById('editEmail').value = email;
+  document.getElementById('editModal').style.display = 'block';
+  document.getElementById('editModal').classList.add('show');
+  document.getElementById('editModal').style.background = 'rgba(0,0,0,0.5)';
+}
+
+// Hide Modal
+function hideModal() {
+  document.getElementById('editModal').style.display = 'none';
+  document.getElementById('editModal').classList.remove('show');
+}
+
+// Save Edit
+async function saveEdit() {
+  const name = document.getElementById('editName').value.trim();
+  const email = document.getElementById('editEmail').value.trim();
+  if (!name || !email || !currentEditId) return;
+
+  showLoading();
+  await fetch(`${DB_URL}/${currentEditId}.json`, {
+    method: 'PUT',
+    body: JSON.stringify({ name, email })
+  });
+  hideModal();
+  await fetchUsers();
+  hideLoading();
+}
+
+// Loading
+function showLoading() {
+  document.getElementById('loading').style.display = 'block';
+}
+
+function hideLoading() {
+  document.getElementById('loading').style.display = 'none';
+}
+
+// Init
+fetchUsers();
+</script>
+
+</body>
+</html>
