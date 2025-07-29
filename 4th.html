@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: #f2f2f2;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+
+    #weather {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .error {
+      color: red;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Weather Checker</h1>
+  <form id="weatherForm">
+    <input type="text" id="city" placeholder="Enter city name" required />
+    <button type="submit">Get Weather</button>
+  </form>
+
+  <div id="weather"></div>
+  <div id="error" class="error"></div>
+
+  <script>
+    const weatherForm = document.getElementById('weatherForm');
+    const cityInput = document.getElementById('city');
+    const weatherDisplay = document.getElementById('weather');
+    const errorDisplay = document.getElementById('error');
+
+    weatherForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const city = cityInput.value.trim(); // Trim whitespace
+
+      // Input validation
+      if (city === "") {
+        errorDisplay.textContent = "City name cannot be empty.";
+        weatherDisplay.textContent = "";
+        return;
+      }
+
+      fetchWeather(city);
+    });
+
+    async function fetchWeather(city) {
+      const apiKey = 'YOUR_API_KEY'; // 🔁 Replace with your actual OpenWeatherMap API key
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
+
+      try {
+        const response = await fetch(url);
+
+        // If city not found or bad response
+        if (!response.ok) {
+          throw new Error("City not found or request failed.");
+        }
+
+        const data = await response.json();
+
+        // Safely display weather data
+        const name = data.name;
+        const temp = data.main.temp;
+        const description = data.weather[0].description;
+
+        weatherDisplay.textContent = `Weather in ${name}: ${temp}°C, ${description}`;
+        errorDisplay.textContent = ""; // Clear any previous error
+
+      } catch (err) {
+        // Handle fetch/network/API errors
+        weatherDisplay.textContent = "";
+        errorDisplay.textContent = "Failed to fetch weather. Please check the city name or try again later.";
+        console.error("Error:", err);
+      }
+    }
+  </script>
+
+</body>
+</html>
